@@ -11,6 +11,7 @@
         android:id="@+id/imageView"
         android:src="@drawable/ic_launcher_background"
         android:layout_gravity="center_horizontal"
+        android:onClick="showDescription"
         />
 
 </LinearLayout>
