@@ -4,22 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SplashActivity"
-    android:background="@color/colorPrimary">
+    android:background="@color/colorPrimary"
+    tools:context=".SplashActivity">
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scaleType="center"
-
         android:src="@drawable/splash_screen"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.258"></ImageView>
+        app:layout_constraintVertical_bias="0.258" />
 
     <TextView
         android:id="@+id/textView"
@@ -27,13 +26,13 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/montserrat"
         android:padding="2dp"
-        android:shadowColor="@color/colorAccent"
-        android:shadowDx="30"
-        android:shadowDy="30"
-        android:shadowRadius="20"
-        android:text="MobileTrailers"
+        android:shadowColor="@color/colorTransparentGray"
+        android:shadowDx="5"
+        android:shadowDy="7"
+        android:shadowRadius="10"
+        android:text="@string/mobiletrailers"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="40dp"
+        android:textSize="40sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -41,6 +40,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
         app:layout_constraintVertical_bias="0.78" />
-        />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
