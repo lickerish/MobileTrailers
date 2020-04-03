@@ -7,7 +7,7 @@ import android.os.Handler;
 
 public class SplashActivity extends Activity {
 
-    private final Long SPLASH_TIME = 3000L;
+    private final Long SPLASH_TIME = 1500L;
     private Handler myHandler;
 
     @Override
