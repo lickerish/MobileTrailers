@@ -25,10 +25,18 @@ android {
         sourceCompatibility = 1.8
     }
 
+} ext {
+
+    axAppcompat = '1.0.2'
+    axOthers = '1.0.0'
+    glide = '4.9.0'
+    supportLib = '28.0.0'
 }
 
 dependencies {
     def nav_version = "2.2.1"
+    def retrofit = '2.6.1'
+    def glide = '4.9.0'
 
     // Java language implementation
     implementation "androidx.navigation:navigation-fragment:$nav_version"
@@ -41,4 +49,15 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0'
+
+    implementation "com.squareup.retrofit2:retrofit:$retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit"
+    implementation "com.android.support:cardview-v7:29.0.0"
+    implementation("com.github.bumptech.glide:glide:$glide") {
+        exclude group: "com.android.support"
+    }
+    annotationProcessor "com.github.bumptech.glide:compiler:$glide"
 }

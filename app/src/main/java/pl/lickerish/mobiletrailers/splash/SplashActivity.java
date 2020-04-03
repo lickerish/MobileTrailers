@@ -1,13 +1,16 @@
-package pl.lickerish.mobiletrailers;
+package pl.lickerish.mobiletrailers.splash;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+import pl.lickerish.mobiletrailers.MainActivity;
+import pl.lickerish.mobiletrailers.R;
+
 public class SplashActivity extends Activity {
 
-    private final Long SPLASH_TIME = 3000L;
+    private final Long SPLASH_TIME = 1500L;
     private Handler myHandler;
 
     @Override

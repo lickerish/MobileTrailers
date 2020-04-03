@@ -1,11 +1,17 @@
 package pl.lickerish.mobiletrailers;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import pl.lickerish.mobiletrailers.fragments.AboutFragment;
+import pl.lickerish.mobiletrailers.fragments.HomeFragment;
+import pl.lickerish.mobiletrailers.fragments.SearchFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(menuItem -> {
             Fragment selectedFragment = null;
-
             switch (menuItem.getItemId()) {
                 case R.id.nav_home: {
                     selectedFragment = new HomeFragment();
