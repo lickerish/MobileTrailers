@@ -1,17 +1,19 @@
 package pl.lickerish.mobiletrailers.network;
 
+import android.content.Context;
+
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class RetrofitClientInstance {
-    private static Retrofit retrofit;
-    private static final String BASE_URL = "https://jsonplaceholder.typicode.com";
+public class MovieApi {
+    private static Retrofit retrofit = null;
+    private static final String BASE_URL = "https://api.themoviedb.org/3/";
 
-    public static Retrofit getRetrofitInstance() {
+    public static Retrofit getClient() {
         if (retrofit == null) {
-            retrofit = new retrofit2.Retrofit.Builder()
-                    .baseUrl(BASE_URL)
+            retrofit = new Retrofit.Builder()
                     .addConverterFactory(GsonConverterFactory.create())
+                    .baseUrl(BASE_URL)
                     .build();
         }
         return retrofit;

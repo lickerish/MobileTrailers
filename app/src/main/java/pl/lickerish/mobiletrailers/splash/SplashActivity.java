@@ -1,9 +1,12 @@
-package pl.lickerish.mobiletrailers;
+package pl.lickerish.mobiletrailers.splash;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
+import pl.lickerish.mobiletrailers.MainActivity;
+import pl.lickerish.mobiletrailers.R;
 
 public class SplashActivity extends Activity {
 
