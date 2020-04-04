@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.Collections;
 import java.util.List;
 
 import pl.lickerish.mobiletrailers.R;
@@ -46,10 +46,12 @@ public class HomeFragment extends Fragment {
         recyclerView = view.findViewById(R.id.coversRecyclerView);
 
         layoutManager = new GridLayoutManager(this.getActivity(), 2);
-        recyclerView.setHasFixedSize(true);
+        recyclerView.setHasFixedSize(false);
         recyclerView.setLayoutManager(layoutManager);
 
         apiInterface = MovieApi.getClient().create(MovieService.class);
+        adapter = new RecyclerViewAdapter(Collections.emptyList(), HomeFragment.this.getActivity());
+        recyclerView.setAdapter(adapter);
         performPagination();
 
         return view;
@@ -62,15 +64,8 @@ public class HomeFragment extends Fragment {
             @Override
             public void onResponse(Call<TopRatedMovies> call, Response<TopRatedMovies> response) {
                 List<Result> resultList = response.body().getResults();
-                adapter = new RecyclerViewAdapter(resultList, HomeFragment.this.getActivity());
-//                adapter.addResults(resultList);
-                recyclerView.setAdapter(adapter);
-
-
-//                    List<Result> resultList = response.body().getResults();
-//                    adapter = new RecyclerViewAdapter(resultList, HomeFragment.this.getActivity());
-//                    recyclerView.setAdapter(adapter);
-//                    Toast.makeText(HomeFragment.this.getActivity(), "No more Images available", Toast.LENGTH_SHORT).show();
+                
+                adapter.addResults(resultList);
 
             }
 
@@ -101,7 +96,6 @@ public class HomeFragment extends Fragment {
                         isLoading = true;
                     }
                 }
-
             }
         });
     }

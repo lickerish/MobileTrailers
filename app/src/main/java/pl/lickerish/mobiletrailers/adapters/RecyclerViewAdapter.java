@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import pl.lickerish.mobiletrailers.R;
 import pl.lickerish.mobiletrailers.model.Result;
@@ -56,9 +58,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     public void addResults(List<Result> results) {
-        for (Result result : results) {
-            resultList.add(result);
-        }
+        List<Result> newList = Stream.concat(resultList.stream(), results.stream())
+                .collect(Collectors.toList());
+        resultList = newList;
         notifyDataSetChanged();
     }
 }
