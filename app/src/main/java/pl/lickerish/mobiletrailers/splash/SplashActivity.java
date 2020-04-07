@@ -17,10 +17,13 @@ public class SplashActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        changeActivity(MainActivity.class);
+    }
 
+    private void changeActivity(Class targetActivity) {
         myHandler = new Handler();
         myHandler.postDelayed(() -> {
-            Intent mainIntent = new Intent(SplashActivity.this, MainActivity.class);
+            Intent mainIntent = new Intent(SplashActivity.this, targetActivity);
             SplashActivity.this.startActivity(mainIntent);
             SplashActivity.this.finish();
         }, SPLASH_TIME);

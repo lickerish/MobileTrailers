@@ -1,41 +1,43 @@
 package pl.lickerish.mobiletrailers;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import pl.lickerish.mobiletrailers.fragments.HomeFragment;
+import pl.lickerish.mobiletrailers.fragments.SearchFragment;
+import pl.lickerish.mobiletrailers.fragments.SearchFragmentContainer;
 
-public class MainActivity extends AppCompatActivity {
+public class SearchActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_search);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SearchFragmentContainer()).commit();
         setOnNavigationListener();
 
     }
 
     private void setOnNavigationListener() {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.nav_home);
+        bottomNavigationView.setSelectedItemId(R.id.nav_search);
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(menuItem -> {
 
             switch (menuItem.getItemId()) {
                 case R.id.nav_home: {
-                    return true;
-                }
-                case R.id.nav_search: {
-                    startActivity(new Intent(getApplicationContext(), SearchActivity.class));
+                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
                     overridePendingTransition(0, 0);
                     break;
+                }
+                case R.id.nav_search: {
+                    return true;
                 }
                 case R.id.nav_about: {
                     startActivity(new Intent(getApplicationContext(), AboutActivity.class));

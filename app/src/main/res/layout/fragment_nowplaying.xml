@@ -6,7 +6,7 @@
     android:background="@color/White">
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/topRatedLinear"
+        android:id="@+id/nowPlayingLinear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -15,19 +15,19 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/topRatedHeader"
+            android:id="@+id/nowPlayingHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/montserrat_bold"
-            android:text="Top Rated"
+            android:text="Now Playing"
             android:textColor="@android:color/black"
             android:textFontWeight="800"
-            android:textSize="30sp" />
+            android:textSize="23sp" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/topRatedRecycler"
+            android:id="@+id/nowPlayingRecycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
@@ -36,13 +36,5 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <FrameLayout
-        android:id="@+id/popularFragmentContainer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/topRatedLinear"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

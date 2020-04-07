@@ -5,12 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/White"
-    tools:context=".MainActivity">
+    tools:context=".SearchActivity">
+
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -21,15 +22,14 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@drawable/rounded"
+        android:elevation="5dp"
+        android:outlineAmbientShadowColor="@android:color/black"
+        app:elevation="5dp"
         app:itemIconTint="@drawable/selector"
         app:itemTextColor="@drawable/selector"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_navigation"
-        android:elevation="5dp"
-        app:elevation="5dp"
-        android:outlineAmbientShadowColor="@android:color/black" />
+        app:menu="@menu/bottom_navigation" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-

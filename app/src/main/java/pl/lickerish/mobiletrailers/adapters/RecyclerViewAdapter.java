@@ -22,6 +22,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     List<Result> resultList;
     private Context context;
+    private String BASE_IMAGE_URL = "https://image.tmdb.org/t/p/w500/";
 
     public RecyclerViewAdapter(List<Result> resultList, Context context) {
         this.resultList = resultList;
@@ -38,8 +39,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Result movie = resultList.get(position);
-        // TODO CHECK Potential error Haven't implemented text views about 29:10 movie
-        Glide.with(context).load("https://image.tmdb.org/t/p/w500/" + movie.getPosterPath()).into(holder.poster);
+        Glide.with(context).load(BASE_IMAGE_URL + movie.getPosterPath()).into(holder.poster);
     }
 
     @Override
