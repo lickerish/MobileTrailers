@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import pl.lickerish.mobiletrailers.R;
 import pl.lickerish.mobiletrailers.model.Result;
@@ -20,6 +22,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     List<Result> resultList;
     private Context context;
+    private String BASE_IMAGE_URL = "https://image.tmdb.org/t/p/w500/";
 
     public RecyclerViewAdapter(List<Result> resultList, Context context) {
         this.resultList = resultList;
@@ -36,8 +39,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Result movie = resultList.get(position);
-        // TODO CHECK Potential error Haven't implemented text views about 29:10 movie
-        Glide.with(context).load("https://image.tmdb.org/t/p/w500/" + movie.getPosterPath()).into(holder.poster);
+        Glide.with(context).load(BASE_IMAGE_URL + movie.getPosterPath()).into(holder.poster);
     }
 
     @Override
@@ -56,9 +58,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     public void addResults(List<Result> results) {
-        for (Result result : results) {
-            resultList.add(result);
-        }
+        List<Result> newList = Stream.concat(resultList.stream(), results.stream())
+                .collect(Collectors.toList());
+        resultList = newList;
         notifyDataSetChanged();
     }
 }

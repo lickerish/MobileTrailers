@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,8 +24,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SearchFragment extends Fragment {
-
+public class UpcomingFragment extends Fragment {
     private RecyclerView recyclerView;
     private LinearLayoutManager layoutManager;
     private String API_KEY = "26c487906fb944a1dc78fe3e70fac38a";
@@ -39,10 +37,11 @@ public class SearchFragment extends Fragment {
     private int pastVisibleItems, visibleItemCount, totalItemCount, previous_total = 0;
     private int view_treshold;
 
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_search, container, false);
+        View view = inflater.inflate(R.layout.fragment_upcoming, container, false);
 
         setupView(view);
         loadNextPage();
@@ -51,32 +50,20 @@ public class SearchFragment extends Fragment {
 
     }
 
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        Fragment topRatedFragment = new PopularFragment();
-        Fragment popularFragment = new PopularFragment();
-        Fragment upcomingFragment = new PopularFragment();
-        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
-        transaction.replace(R.id.topRatedFragmentContainer, topRatedFragment);
-        transaction.replace(R.id.popularFragmentContainer, popularFragment);
-        transaction.replace(R.id.upcomingFragmentContainer, upcomingFragment);
-    }
-
-
     private void setupView(View view) {
-        recyclerView = view.findViewById(R.id.topRatedRecycler);
+        recyclerView = view.findViewById(R.id.upcomingRecycler);
 
         layoutManager = new LinearLayoutManager(this.getActivity(), RecyclerView.HORIZONTAL, false);
         recyclerView.setHasFixedSize(false);
         recyclerView.setLayoutManager(layoutManager);
 
         apiInterface = MovieApiConnector.getClient().create(MovieApiRepository.class);
-        adapter = new RecyclerViewAdapter(Collections.emptyList(), SearchFragment.this.getActivity());
+        adapter = new RecyclerViewAdapter(Collections.emptyList(), UpcomingFragment.this.getActivity());
         recyclerView.setAdapter(adapter);
     }
 
     private void loadNextPage() {
-        Call<TopRatedMovies> call = apiInterface.getTopRatedMovies(API_KEY, "en-US", pageNumber);
+        Call<TopRatedMovies> call = apiInterface.getUpcomingMovies(API_KEY, "en-US", pageNumber);
 
         call.enqueue(new Callback<TopRatedMovies>() {
             @Override
@@ -118,3 +105,4 @@ public class SearchFragment extends Fragment {
         });
     }
 }
+
